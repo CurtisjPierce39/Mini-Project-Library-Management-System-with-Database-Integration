@@ -3,7 +3,12 @@ from mysql.connector import Error
 
 class Book:
 
-    def add_book(self, title, author_id, isbn, publication_date):
+    # def __init__(self):
+    #     self.books = {}
+    #     self.borrowed_books = []
+    #     self.authors = {}
+
+    def add_book(self, title, author_id, isbn, publication_date):#Used to add a new book
         conn = connect_database()
         if conn is not None:
             try:
@@ -18,7 +23,7 @@ class Book:
                 cursor.close()
                 conn.close()
 
-    def borrow_book(self, user_id, book_id, borrow_date, return_date):
+    def borrow_book(self, user_id, book_id, borrow_date, return_date):#Used to lend out books to users
         conn = connect_database()
         if conn is not None:
             try:
@@ -34,7 +39,7 @@ class Book:
                 cursor.close()
                 conn.close()
 
-    def return_book(self, book_id, borrowed_book):
+    def return_book(self, book_id, borrowed_book):#Used to return borrowed books to the library
         conn = connect_database()
         if conn is not None:
             try:
@@ -49,7 +54,7 @@ class Book:
                 cursor.close()
                 conn.close()
 
-    def search_book(self, book_id):
+    def search_book(self, book_id):#Used to search for a single book in the library
         conn = connect_database()
         if conn is not None:
             try:
@@ -69,7 +74,7 @@ class Book:
                 cursor.close()
                 conn.close()
 
-    def display_all_books(self):
+    def display_all_books(self):#Used to display all books in the library
         conn = connect_database()
         if conn is not None:
             try:
@@ -90,7 +95,10 @@ class Book:
                 conn.close()
 class User:
 
-    def set__add_user(self, name, library_id):
+    # def __init__(self):
+    #     self.__users = {}
+
+    def set__add_user(self, name, library_id):#Used to add new users to the library system
         conn = connect_database()
         if conn is not None:
             try:
@@ -105,7 +113,7 @@ class User:
                 cursor.close()
                 conn.close()
 
-    def get__view_user(self, user_id):
+    def get__view_user(self, user_id):#Used to view a single user in the system
         conn = connect_database()
         if conn is not None:
             try:
@@ -122,7 +130,7 @@ class User:
                 cursor.close()
                 conn.close()
                 
-    def get__display_users(self):
+    def get__display_users(self):#Used to display all users in the system
         conn = connect_database()
         if conn is not None:
             try:
@@ -140,7 +148,12 @@ class User:
                 conn.close()
 class Author:
 
-    def add_author(self, name, biography):
+    # def __init__(self):
+    #     self.authors = []
+    #     self.author_books = []
+    #     self.books = {}
+        
+    def add_author(self, name, biography):#Used to add a new author to the system
         conn = connect_database()
         if conn is not None:
             try:
@@ -155,7 +168,7 @@ class Author:
                 cursor.close()
                 conn.close()
 
-    def view_author(self, author_id):
+    def view_author(self, author_id):#Used to view an author in the library system
         conn = connect_database()
         if conn is not None:
             try:
@@ -172,7 +185,7 @@ class Author:
                 cursor.close()
                 conn.close()
                 
-    def display_authors(self):
+    def display_authors(self):#Used to display all authors in the system
         conn = connect_database()
         if conn is not None:
             try:
@@ -189,13 +202,13 @@ class Author:
                 cursor.close()
                 conn.close()
 class UserInterface:
-    
+
     def __init__(self):
         self.book = Book()
         self.user = User()
         self.author = Author()
 
-    def main(self):
+    def main(self):#Used to operate the User Interface Menu
         while True:
             print("Welcome to the Library Management System")
             print("---Book---")
